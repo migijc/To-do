@@ -15,6 +15,7 @@ function pushCategoryToArray(category){
     catergoriesArray.push(category)
 }
 
+
 createNewCategory("Default")
 export {catergoriesArray}
 

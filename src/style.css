@@ -28,3 +28,11 @@ body{
 div{
     border: 2px solid black;
 }
+
+.newTaskForm{
+    display: flex;
+    flex-direction: column;
+    width: 25rem;
+    gap: .3rem;
+    border: 2px solid green;
+}
