@@ -6,7 +6,7 @@
 }
 let catergoriesArray= []
 
-function createNewCategory(name){
+export default function createNewCategory(name){
     let category=new Categories(name)
     pushCategoryToArray(category)
 }
@@ -16,7 +16,8 @@ function pushCategoryToArray(category){
 }
 
 
-createNewCategory("Default")
+
+
 export {catergoriesArray}
 
 

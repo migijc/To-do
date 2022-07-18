@@ -1,11 +1,26 @@
+@import url(../node_modules/@fortawesome/fontawesome-free/css/all.css);
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./fonts/roboto/roboto-v30-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local(''),
+         url('./fonts/roboto/roboto-v30-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('./fonts/roboto/roboto-v30-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('./fonts/roboto/roboto-v30-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('./fonts/roboto/roboto-v30-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('./fonts/roboto/roboto-v30-latin-regular.svg#Roboto') format('svg'); /* Legacy iOS */
+  }
+
 body{
-    background-color: rgb(226, 226, 226);
+    background-color: rgb(255, 255, 255);
     display: grid;
     width: 100vw;
     height: 100vh;
     grid-template-columns: 1fr 4fr;
     grid-template-rows: 1fr 11fr;
-
+    font-family: "Roboto";
+    
 }
 
 .mainContent{
@@ -14,20 +29,25 @@ body{
 
 .sideBar{
     grid-area: 2/1/3/-2;
+    background-color: rgb(224, 224, 224);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .header{
     grid-column: 1/-1;
+    background-color: rgb(17, 146, 221);
+
 }
 
 *{
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
-div{
-    border: 2px solid black;
-}
+
 
 .newTaskForm{
     display: flex;
@@ -35,4 +55,86 @@ div{
     width: 25rem;
     gap: .3rem;
     border: 2px solid green;
+}
+
+.inbox.sideBarFolder{
+    margin-left: -1.3rem;
+    margin-bottom: 2rem;
+}
+
+.inbox::before{
+    content: "\f01c";
+    font-family: "Font awesome 5 free";
+    font-weight: 900;
+}
+
+.todayFolder::before{
+    content: "\f005";
+    font-family: "Font awesome 5 free";
+    font-weight: 900;
+    color: rgb(12, 42, 54);
+}
+
+.upcomingFolder::before{
+    content: "\f783";
+    font-family: "Font awesome 5 free";
+    font-weight: 900;
+    color: rgb(12, 42, 54);
+}
+
+.allTasksFolder::before{
+    content: "\f0ae";
+    font-family: "Font awesome 5 free";
+    font-weight: 900;
+    color: rgb(12, 42, 54);
+}
+
+.sideBarFolder{
+    font-size: 1.5rem;
+    position: relative;
+    margin-right: 2rem;
+}
+
+.sideBarFolder::before{
+    position: absolute;
+    margin-left: -2rem;
+}
+
+.sideBarFolders{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap:1.2rem;
+}
+
+.sideBarFolder:hover:before{
+    color: rgb(17, 146, 221)
+}
+
+.newFolderButton{
+    background-color: transparent;
+    width: 5rem;
+    height: 5rem;
+    appearance: none;
+    border: none;
+    position:absolute;
+    bottom: 1rem;
+    left: 13rem;
+
+
+}
+
+.newFolderButton::before{
+    content: "\f65e";
+    font-family: "Font awesome 5 free";
+    font-weight: 900;
+    font-size: 3rem;
+}
+
+.newFolderButton:hover::before{
+    content: "\f65e";
+    font-family: "Font awesome 5 free";
+    font-weight: 900;
+    font-size: 3.4rem;
+    color: rgb(17, 146, 221);
 }
