@@ -1,4 +1,5 @@
-
+import { openFolderForm } from "./DomEvents"
+import { functionsToCreateForms } from "./taskForm"
 function createheaderDiv(){
     const header=document.createElement("div")
     header.classList.add("header")
@@ -10,16 +11,16 @@ function addDefaultFoldersToSideBar(sideBar){
     folders.classList.add("sideBarFolders")
     const inbox=document.createElement('p')
     inbox.textContent="Inbox"
-    inbox.classList.add("inbox", "sideBarFolder")
+    inbox.classList.add("inbox")
     const today=document.createElement('p')
     today.textContent="Today"
-    today.classList.add("todayFolder", "sideBarFolder")
+    today.classList.add("today","todayFolder", "sideBarFolder")
     const upcoming=document.createElement('p')
     upcoming.textContent="Upcoming"
-    upcoming.classList.add("upcomingFolder", "sideBarFolder")
+    upcoming.classList.add("upcoming","upcomingFolder", "sideBarFolder")
     const allTasks=document.createElement(('p'))
     allTasks.textContent="All Tasks"
-    allTasks.classList.add("allTasksFolder", "sideBarFolder")
+    allTasks.classList.add("allTasks", "allTasksFolder", "sideBarFolder")
 
     const newFolderButton=document.createElement("button")
     newFolderButton.setAttribute("type", "button")
@@ -54,7 +55,7 @@ let createSideBarDiv=()=>{
 
 }
 
-
+// openFolderForm()
 
 
 export default function loadLayout(){
