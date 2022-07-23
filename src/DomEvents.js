@@ -93,8 +93,8 @@ let extendDiv=function(taskNumber){
     console.log(taskNumber)
     let div=document.querySelector("."+ `${taskNumber}`)
     div.classList.add("divExtend")
-    let divExtend=null
-    console.log(divExtend)
+    let divToExtend=getTask(taskNumber)
+    console.log(divToExtend)
     let buttonToRemove=document.querySelector("."+`${taskNumber}`+">button")
     let description=document.createElement("p")
     let descriptionDiv=document.createElement("div");
@@ -117,17 +117,31 @@ let shrinkDiv=function(divToExtend){
     buttonToRemoveClass.classList.add("sizeButton")
 }
 
+// for (let props in folderStorage.AllTasks){
+//     console.log(props)
+// }
+function getTask(taskNumber){
+    let returnValue=null
+    folderStorage.AllTasks.tasks.forEach((task)=>{
+    if(task.taskNumber==taskNumber){
+         returnValue= task
+    }
+})
+return returnValue
+}
 
 
-// document.body.addEventListener("click", (e)=>{
-//     if(e.target.classList=="sizeButton"){
-//         console.log(e)
-//         e.target.classList.add("extendClicked")
-//         let taskNumber=e.target.parentNode.classList[0]
-//         console.log(taskNumber)
-//         extendDiv((taskNumber))
-//     }
-// })
+
+
+document.body.addEventListener("click", (e)=>{
+    if(e.target.classList=="sizeButton"){
+        console.log(e)
+        e.target.classList.add("extendClicked")
+        let taskNumber=e.target.parentNode.classList[0]
+        console.log(taskNumber)
+        extendDiv((taskNumber))
+    }
+})
 
 document.body.addEventListener("click", (e)=>{
     if(e.target.classList=="shrinkDiv"){
