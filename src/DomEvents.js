@@ -61,31 +61,13 @@ document.body.addEventListener("click", (e)=>{
     }
 })
 
- function displayTasks(){
-    const  mainContent=document.querySelector('.mainContent')
-    allTasks.forEach((task)=>{
-        let taskDiv=document.createElement('div')
-        let name=document.createElement('p')
-        let description=document.createElement('p')
-        description.textContent=task.description
-        let dueDate=document.createElement('p')
-        dueDate.textContent=task.dueDate
-        let priority=document.createElement('p')
-        priority.textContent=task.priority
-        name.textContent=task.name
-        taskDiv.appendChild(name)
-        taskDiv.appendChild(description)
-        taskDiv.appendChild(dueDate)
-        taskDiv.appendChild(priority)
-
-        mainContent.appendChild(taskDiv)
-    })
-}
 
 function addNewFolderToSideBar(folder){
+    console.log(folder)
     const sideBarFolders=document.querySelector(".sideBarFolders")
     const newFolder=document.createElement("p")
     newFolder.textContent=folder
+    console.log(newFolder)
     newFolder.classList=newFolder.textContent.replace(/\s/g,"")
     newFolder.classList.add("sideBarFolder", "customFolder")
     sideBarFolders.appendChild(newFolder)
@@ -96,11 +78,76 @@ function addNewFolderToSideBar(folder){
 (function displayCustomFolderTasks(){
     document.body.addEventListener("click", (e)=>{
         let mainContent=document.querySelector(".mainContent")
-        console.log(e.target)
-        if((e.target.classList[2]== "customFolder") || (e.target.classList[0]=="allTasks")){
+        if((e.target.classList[2]== "customFolder") || (e.target.classList[0]=="AllTasks")){
+            mainContent.textContent=""
+            console.log(folderStorage)
+            console.log(e.target.classList)
             let display= new FolderDisplay(folderStorage[e.target.classList[0]], folderStorage[e.target.classList[0]].tasks)
             display.getTasks()
             mainContent.appendChild(display.contentDiv)
         }
     })
 })();
+
+let extendDiv=function(taskNumber){
+    console.log(taskNumber)
+    let div=document.querySelector("."+ `${taskNumber}`)
+    div.classList.add("divExtend")
+    let divExtend=null
+    console.log(divExtend)
+    let buttonToRemove=document.querySelector("."+`${taskNumber}`+">button")
+    let description=document.createElement("p")
+    let descriptionDiv=document.createElement("div");
+    description.textContent=divToExtend.description
+    div.removeChild(buttonToRemove)
+    createShrinkDivButton(div)
+    descriptionDiv.appendChild(description)
+    descriptionDiv.classList.add("descriptionDiv")
+    description.classList.add("descriptionForTask"+ `${taskNumber}`)
+    div.appendChild(descriptionDiv)
+}
+
+let shrinkDiv=function(divToExtend){
+    let taskId=divToExtend.taskNumberID
+    let div=document.querySelector(".task"+`${divToExtend.taskNumberID}`)
+    div.classList.remove("divExtend")
+    let buttonToRemoveClass=document.querySelector(".task"+`${+taskId}`+">button")
+    buttonToRemoveClass.classList.remove("shrinkDiv")
+    buttonToRemoveClass.classList.remove("extendClicked")
+    buttonToRemoveClass.classList.add("sizeButton")
+}
+
+
+
+// document.body.addEventListener("click", (e)=>{
+//     if(e.target.classList=="sizeButton"){
+//         console.log(e)
+//         e.target.classList.add("extendClicked")
+//         let taskNumber=e.target.parentNode.classList[0]
+//         console.log(taskNumber)
+//         extendDiv((taskNumber))
+//     }
+// })
+
+document.body.addEventListener("click", (e)=>{
+    if(e.target.classList=="shrinkDiv"){
+        console.log(e)
+        let taskNumber=e.target.parentNode.classList[0]
+        e.target.classList.add("extendClicked")
+        shrinkDiv(getTaskOfNumber(taskNumber))
+    }
+})
+
+
+function createShrinkDivButton(divToAppend){
+    let button=document.createElement("button")
+    button.classList.add("shrinkDiv")
+    divToAppend.appendChild(button)
+}
+
+
+
+
+
+// console.log(document.querySelector(".1"))
+

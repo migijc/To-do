@@ -34,6 +34,11 @@
     /* width: 20rem; */
 }
 
+.newFolderForm{
+    position: absolute;
+    min-height: 6px;
+}
+
 .inputDiv{
     display: flex;
     flex-direction: column;
@@ -85,7 +90,22 @@ body > .mainContent:not(.newTaskForm){
     font-size: 1.6rem;
 }
 
-.dueDateDiv{
+.submitFolderButton{
+    /* position: absolute; */
+    /* bottom: 1rem; */
+    left: 35%;
+    border-radius: 90px;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: none;
+    background-color: white;
+    color: rgb(12, 42, 54);
+    font-weight: 600;
+    font-size: 1.6rem;
+}
+
+.dueDateDiv,
+.folderNameDiv{
     display: flex;
     flex-direction: row;
     align-items: center;

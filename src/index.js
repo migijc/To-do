@@ -1,5 +1,6 @@
 import css from "./style.css"
 import formsCSS from "./forms.css"
+import displayCSS from "./taskDisplays.css"
 import loadLayout from "./loadLayout"
 import newTaskEntry, { createNewFolderUI } from "./DomEvents"
 import {folderStorage} from "./categories"
@@ -12,6 +13,22 @@ import {test1} from "./folderDisplays"
 
 loadLayout()
 console.log(folderStorage)
+console.log(allTasks)
+createNewTask("Buy lightBulbs", "40watts", "03/17/2023", "high", "AllTasks")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // createNewFolderUI()
 

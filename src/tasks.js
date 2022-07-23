@@ -7,11 +7,18 @@
         this.description=description;
         this.dueDate=dueDate;
         this.priority=priority
+        this.taskNumberID=++counter1
+        this.taskNumber=classToAdd+ ++counter
+        
     }
 }
+
+let counter=0
+let counter1=0
+let classToAdd="task"
 export default function createNewTask(name, desc, date, pri, folder){
     let newTask= new Tasks(name,desc,date,pri,)
-    pushTaskToArray(allTasks, newTask);
+    pushTaskToArray(folderStorage.AllTasks.tasks, newTask);
     assignTaskToCategory(folder, newTask)
 }
 
@@ -20,7 +27,11 @@ function pushTaskToArray(array, newTask){
 }
 
 function assignTaskToCategory(folder, newTask){
-    folderStorage[folder].tasks.push(newTask)
+    if(folder=="AllTasks"){
+        return;
+    } else {
+        folderStorage[folder.replace(/\s/g,"")].tasks.push(newTask)
+    }
 }
 
 const editTasks={

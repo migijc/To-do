@@ -1,7 +1,7 @@
 import { folderStorage } from "./categories"
 
 
-let folders=["allTasks"]
+let folders=["All Tasks"]
 // for (let props in folderStorage){
 //     folders.push(props)
 // }

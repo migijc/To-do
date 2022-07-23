@@ -20,7 +20,7 @@ function addFolderToObject(folder){
     folderStorage[folder.name]=folder
 }
 
-const all= createNewFolder("allTasks")
+const all= createNewFolder("All Tasks")
 const today=createNewFolder("Today")
 const upcoming=createNewFolder("Upcoming")
 
