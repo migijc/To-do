@@ -69,12 +69,14 @@ document.body.addEventListener("click", (e)=>{
         let priority=testTask.inputs[3].value
         let folder= testTask.inputs[4].value
         let folderToDisplayClass=folder.replace(/\s/g,"")
-        // let folderToDisplayClassLC=folderToDisplayClass.toLowerCase()
-        if(folderToDisplayClass == "alltasks"){
+        console.log(folderToDisplayClass)
+        let folderToDisplayClassLC=folderToDisplayClass.toLowerCase()
+        if(folderToDisplayClass == "AllTasks"){
             folderToDisplayClass="AllTasks"
+            folderToDisplayClassLC=folderToDisplayClass
         }
         console.log(folderToDisplayClass)
-        // console.log(folderToDisplayClassLC)
+        console.log(folderToDisplayClassLC)
         createNewTask(name, description, dueDate, priority, folder)
         let taskToPush=`${name}`+":"+`${description}`+":"+`${dueDate}`+":"+`${priority}`+":"+`${folder}`
         allTasks.push(taskToPush)
@@ -83,7 +85,7 @@ document.body.addEventListener("click", (e)=>{
         const addButton= document.querySelector(".addButton")
         addButton.disabled=false;
         displayAllFolders(folderStorage[folderToDisplayClass], folderStorage[folderToDisplayClass].tasks)
-        let folderDiv=document.querySelector("."+folderToDisplayClass)
+        let folderDiv=document.querySelector("."+folderToDisplayClassLC)
         folderDiv=folderDiv.parentElement
         removeSelectecFolderClass()
         folderDiv.classList.add("selectedFolder")
@@ -146,7 +148,7 @@ export function addNewFolderToSideBar(folder){
         if((e.target.classList[2]== "customFolder") || (e.target.classList[0]=="AllTasks") || (e.target.classList[0]=="upcoming")|| (e.target.classList[0]=="today")){
             removeSelectecFolderClass()
             e.target.parentNode.classList.add("selectedFolder")
-            displayAllFolders(folderStorage[e.target.classList[0]],folderStorage[e.target.classList[0]].tasks)
+            displayAllFolders(folderStorage[e.target.textContent.replace(/\s/g,"")],folderStorage[e.target.textContent.replace(/\s/g,"")].tasks)
         }
     })
 })();
