@@ -68,11 +68,13 @@ document.body.addEventListener("click", (e)=>{
         let dueDate=testTask.inputs[2].value
         let priority=testTask.inputs[3].value
         let folder= testTask.inputs[4].value
-        let folderToDisplayClass=folder.replace(/\s/g,"").toLowerCase()
+        let folderToDisplayClass=folder.replace(/\s/g,"")
+        // let folderToDisplayClassLC=folderToDisplayClass.toLowerCase()
         if(folderToDisplayClass == "alltasks"){
             folderToDisplayClass="AllTasks"
         }
         console.log(folderToDisplayClass)
+        // console.log(folderToDisplayClassLC)
         createNewTask(name, description, dueDate, priority, folder)
         let taskToPush=`${name}`+":"+`${description}`+":"+`${dueDate}`+":"+`${priority}`+":"+`${folder}`
         allTasks.push(taskToPush)
