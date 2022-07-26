@@ -113,5 +113,6 @@ testTask.addSelectInput(priorities, "priorities", "Priority: ")
 testTask.addSelectInput(folders, "folders", "Folder: ")
 testTask.addButtonToForm("submitTaskButton")
 
+
+
 export {testForm, testTask}
-console.log(testTask)

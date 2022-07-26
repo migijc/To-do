@@ -11,6 +11,14 @@
          url('./fonts/roboto/roboto-v30-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
          url('./fonts/roboto/roboto-v30-latin-regular.svg#Roboto') format('svg'); /* Legacy iOS */
   }
+@font-face {
+    font-family: "Alba";
+    src: url("./fonts/roboto/ALBA____.TTF");
+}
+  :root{
+      --today-tasks:"";
+}
+
 
 body{
     background-color: rgb(255, 255, 255);
@@ -18,7 +26,7 @@ body{
     width: 100vw;
     height: 100vh;
     grid-template-columns: 1fr 4fr;
-    grid-template-rows: 1fr 11fr;
+    grid-template-rows: 1fr 16fr;
     font-family: "Roboto";
     
 }
@@ -31,6 +39,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* z-index: 99; */
 }
 
 .sideBar{
@@ -38,33 +47,32 @@ body{
     background-color: rgb(224, 224, 224);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     overflow-y: hidden;
+    /* z-index: 98; */
 }
 
 .header{
     grid-column: 1/-1;
     background-color: rgb(97 109 116);
+    font-family: "Alba";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: rgb(224, 224, 224);
+    /* box-shadow: -1px 6px 20px black; */
+    /* z-index: 100; */
+}
+
+.header p{
+    margin-left:-20px;
 }
 
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-}
-
-
-
-
-.inbox{
-    margin-left: -3.5rem;
-    margin-bottom: 2rem;
-}
-
-.inbox::before{
-    content: "\f01c";
-    font-family: "Font awesome 5 free";
-    font-weight: 900;
 }
 
 .todayFolder::before{
@@ -97,9 +105,9 @@ body{
 
 .sideBarFolder,
 .inbox{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     position: relative;
-    margin-right: 2rem;
+    margin-left: 6rem;
     cursor:pointer;
 }
 
@@ -112,7 +120,8 @@ body{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap:1.2rem;
+    gap:.6rem;
+    margin-top: 3rem;
 }
 
 .sideBarFolder:hover:before{
@@ -142,7 +151,7 @@ body{
     content: "\f65e";
     font-family: "Font awesome 5 free";
     font-weight: 900;
-    font-size: 3.4rem;
+    font-size: 2.3rem;
     color: rgb(17, 146, 221);
 }
 
@@ -159,16 +168,55 @@ body{
 }
 
 .addButton::before{
-    content: "\e4ee";
+    content: "\2b";
     font-family: "Font awesome 5 free";
     font-weight: 900;
     font-size: 2rem;
 }
 
 .addButton:hover::before{
-    content: "\e4ee";
+    content: "\2b";
     font-family: "Font awesome 5 free";
     font-weight: 900;
-    font-size: 3.4rem;
+    font-size: 2.3rem;
     color: rgb(17, 146, 221);
+}
+
+.noTaskMessageDiv{
+    margin-top:9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:2rem;
+}
+
+.noTasksMessage{
+    font-size: 3rem;
+    color: rgb(97 109 116);
+}
+
+.noTasksSubMessage{
+    color:rgb(97 109 116);
+    position: relative;
+    font-size: 1.3rem;
+}
+
+.noTasksSubMessage::before{
+    content: "(";
+    position: absolute;
+    left: -.5rem;
+    font-weight: bold;
+    color: rgb(17, 146, 221);
+    font-size: 1.4rem;
+    top: -.1rem;
+}
+.noTasksSubMessage::after{
+    content: ")";
+    position: absolute;
+    right: -.5rem;
+    font-weight: bold;
+    color:rgb(17, 146, 221);
+    font-size: 1.4rem;
+    top:-.1rem;
 }

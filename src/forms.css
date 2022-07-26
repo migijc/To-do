@@ -32,11 +32,18 @@
     left:50%;
     transform: translate(-50%, -50%);
     /* width: 20rem; */
+    box-shadow:0 0 0 1600px rgba(0,0,0,0.25);/* dark around it */
 }
 
 .newFolderForm{
     position: absolute;
     min-height: 6px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    /* width: 20rem; */
+    box-shadow:0 0 0 1600px rgba(0,0,0,0.25);/* dark around it */
 }
 
 .inputDiv{
@@ -104,6 +111,12 @@ body > .mainContent:not(.newTaskForm){
     font-size: 1.6rem;
 }
 
+.submitTaskButton:hover,
+.submitFolderButton:hover{
+    background-color: rgb(17, 146, 221);
+    border: 1px solid gray;
+}
+
 .dueDateDiv,
 .folderNameDiv{
     display: flex;
@@ -123,6 +136,7 @@ label{
     flex-direction: row;
     gap:1rem;
     align-items: center;
+    justify-content: center;
 }
 
 #taskName{
@@ -130,11 +144,57 @@ label{
     text-align: center;
 }
 
+#taskName::placeholder{
+    color:white;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+#dueDate{
+    appearance: none;
+    color: #e56b24;
+    filter: invert(100%);
+    border-bottom:2px solid#e56b24;
+}
+
+
 select{
     appearance: none;
     text-align: center;
     padding: .1rem;
     box-sizing: border-box;
     font-size: .7rem;
-    width: 8rem
+    width: 8rem;
+    border-radius: 90px;
 }
+
+.prioritiesDiv label,
+.foldersDiv label{
+    display: inline-block;
+    text-align: right;
+    width: 2.5rem;
+}
+
+label{
+    color:white;
+    font-weight: 600;
+}
+
+
+option[value="Low"]{
+    color: rgb(100, 199, 100);
+    font-weight: bold;
+}
+
+option[value="Normal"]{
+   color: rgb(214, 173, 95);
+   font-weight: bold;
+}
+
+option[value="High"]{
+    color: rgb(212, 79, 79);
+    font-weight: bold;
+}
+
+
+

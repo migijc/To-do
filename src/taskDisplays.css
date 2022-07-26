@@ -12,6 +12,7 @@
          url('./fonts/roboto/roboto-v30-latin-regular.svg#Roboto') format('svg'); /* Legacy iOS */
   }
 
+ 
 
 .taskDiv{
     display: flex;
@@ -23,23 +24,48 @@
 }
 
 .taskDiv.high{
-    border: 3px solid rgb(230, 126, 126);
-    background-color: rgb(12, 42, 54);
+    border-bottom: .3px solid rgb(192, 192, 192);
+    border-top: .3px solid rgb(192, 192, 192);
+    background-color: transparent;
 }
 .taskDiv.normal{
-    border: 3px solid rgb(253, 255, 114);
-    background-color: rgb(12, 42, 54);
+    border-bottom: .1px  solid rgb(192, 192, 192);
+    border-top: .3px solid rgb(192, 192, 192);
+    background-color: transparent;
 
 }
 .taskDiv.low{
-    border: 3px solid rgb(106, 194, 150);
-    background-color: rgb(12, 42, 54);
+    border-bottom: .3px solid rgb(192, 192, 192);
+    border-top: .3px  solid rgb(192, 192, 192);
+    background-color: transparent;
 
+}
+
+.taskName:focus-visible{
+    overflow: normal;
+    text-overflow: normal;
+    white-space: none;
+    color:green;
+}
+
+.dueDate:focus-visible{
+    width: 16ch;
+    color:green;
+    overflow: hidden;
+    text-overflow:clip;
+    white-space:nowrap;
+}
+
+.descriptionDiv>p:focus-visible{
+    /* overflow:scroll;
+    text-overflow:none;
+    white-space: none; */
+    color:green;
 }
 
 .taskName::before{
     content: "Task:";
-    color: rgb(165, 161, 161);
+    color: rgb(17, 146, 221);
     position: relative;
     margin-right: .5rem;
     font-size: 1.1rem;
@@ -48,7 +74,7 @@
 
 .dueDate::before{
     content: "Due By:";
-    color: rgb(165, 161, 161);
+    color: rgb(17, 146, 221);
     position: relative;
     margin-right: .5rem;
     font-size: .9rem;
@@ -57,7 +83,7 @@
 
 .dateCreated::before{
     content:"Created on:";
-    color: rgb(165, 161, 161);
+    color: rgb(17, 146, 221);
     position: relative;
     margin-right: .5rem;
     font-size: .9rem;
@@ -73,19 +99,22 @@
 
 .dateCreated{
     margin-left:8rem;
-    color: white;
+    color: rgb(12, 42, 54);
 }
 
 
 .taskContainer{
     margin-top: 4%;
     width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap:1px
     /* border: 2px solid rgb(12, 42, 54); */
 }
 
 .taskName{
     width: 20ch;
-    color: white;
+    color: rgb(12, 42, 54);
     white-space: nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
@@ -94,7 +123,7 @@
 
 .dueDate{
     width: 20ch;
-    color:white;
+    color:rgb(12, 42, 54);
 }
 
 .divExtend{
@@ -109,7 +138,11 @@
     left: 3rem;
     width: 45%;
     height: 60%;
-    color: white;
+    color: rgb(12, 42, 54);
+    white-space:pre-wrap;
+    overflow:scroll;
+    font-size: .8rem;
+    /* text-overflow:ellipsis; */
 }
 
 .sizeButton{
@@ -130,7 +163,7 @@
     content:"\f078";
     font-family: "Font awesome 5 free";
     font-weight: 900;
-    color: white;
+    color: rgb(17, 146, 221);
 }
 
 .divExtend>button{
@@ -141,18 +174,145 @@
     content:"\f078";
     font-family: "Font awesome 5 free";
     font-weight: 900;
-    color: white;
+    color: rgb(17, 146, 221);
 }
-
 
 .divExtend >.shrinkDiv::before{
     content:"\f077";
     font-family: "Font awesome 5 free";
     font-weight: 900;
-    color: white;
+    color: rgb(17, 146, 221);
     height: 1.4rem;
     width: 2rem;
     background-color: transparent;
     border: none;
 }
+
+.aFolderDiv{
+    display: flex;
+    align-items: center;
+    width: 20rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    border-top-right-radius: 90px;
+    border-bottom-right-radius: 90px;
+    position: relative;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+}
+
+.aFolderDiv:hover{
+    background-color: rgb(17, 146, 221,.2);
+}
+
+.selectedFolder p::before{
+    color:rgb(17, 146, 221);
+}
+
+.selectedFolder:hover{
+    background-color: rgb(97, 109, 116,.28);
+}
+.aFolderDiv:hover p::before{
+    color:rgb(17, 146, 221);
+}
+
+
+.todayNumberDiv{
+    margin-left: 1rem;
+    font-size: .7rem;
+    background-color: rgb(121, 117, 117);
+    border-radius: 90px;
+    height: 1rem;
+    color: white;
+    width: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.selectedFolder{
+    background-color: rgb(97, 109, 116,.28);
+    width: 20rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    border-top-right-radius: 90px;
+    border-bottom-right-radius: 90px;
+    position: relative;
+}
+
+
+
+.buttons{
+    display: flex;
+    position: absolute;
+    top:4.5rem;
+    left: 43rem;
+    gap: .7rem;
+}
+
+.editButton{
+    background-color:rgb(12, 42, 54);
+    color: white;
+    font-family: "Roboto";
+    font-weight: 900;
+    height: 1.5rem;
+    width: 5rem;
+    border-radius: 90px;
+    border: none;
+}
+
+.editButton:hover{
+    background-color:rgb(12, 42, 54, .5)
+}
+
+.deleteButton{
+    background-color: transparent;
+    color: rgb(218, 0, 0);
+    border: none;
+}
+
+.deleteButton:hover{
+    font-weight: 900;
+}
+
+.editButton.currentEdit{
+    background-color: rgb(71, 185, 71);
+}
+
+.editButton.currentEdit:hover{
+    background-color: rgb(71, 185, 71, .5);
+}
+
+.prioritylow,
+.prioritynormal,
+.priorityhigh{
+    position: absolute;
+    height: .5rem;
+    /* border: .2rem solid silver; */
+    width: .5rem;
+    left: 34.5rem;
+    border-radius: 90px;
+}
+
+.priorityhigh{
+    width: 2rem;
+    background-color: rgb(212, 79, 79);
+    left: 33.7rem;
+}
+.prioritynormal{
+    background-color: rgb(214, 173, 95);
+}
+.prioritylow{
+    background-color: rgb(100, 199, 100);
+}
+
+.divExtend>.prioritylow,
+.divExtend>.prioritynormal,
+.divExtend>.priorityhigh{
+    margin-top: .5rem;
+}
+
 
