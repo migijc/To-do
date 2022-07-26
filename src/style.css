@@ -158,7 +158,7 @@ body{
 .addButton{
     position: fixed;
     right: 2.5rem;
-    bottom: 48rem;
+    top: 8rem;
     background-color: transparent;
     width: 5rem;
     height: 5rem;
